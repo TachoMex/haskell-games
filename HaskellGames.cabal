@@ -1,0 +1,55 @@
+name:                HaskellGames
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/githubuser/HaskellGames#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Gilberto Vargas
+maintainer:          gilberto@gmail.com
+copyright:           2017 Gilberto Vargas
+category:            Gaming
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Snake.Board
+                 ,     Snake.Game
+                 ,     Snake.Snake
+                 ,     Snake.Input
+                 ,     Snake.Types
+                 ,     GameDriver
+                 ,     Types
+
+  build-depends:       base >= 4.7 && < 5
+               ,       random
+               ,       GLUT
+               ,       OpenGL
+  default-language:    Haskell2010
+
+executable haskel-games
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , HaskellGames
+                     , GLUT
+                     , OpenGL
+  default-language:    Haskell2010
+
+test-suite HaskellGames-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , HaskellGames
+                     , ghc-mod
+
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/githubuser/HaskellGames
